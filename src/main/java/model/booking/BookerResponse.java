@@ -1,68 +1,68 @@
 package model.booking;
 
 import base.BaseModel;
-import com.github.javafaker.Faker;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.javafaker.Faker;
 import org.testng.asserts.SoftAssert;
 
 public class BookerResponse extends BaseModel {
     @JsonProperty("firstname")
-    private final String firstname;
+    private final String firstName;
     @JsonProperty("lastname")
-    private final String lastname;
+    private final String lastName;
     @JsonProperty("totalprice")
-    private final int totalprice;
+    private final int totalPrice;
     @JsonProperty("depositpaid")
-    private final boolean depositpaid;
+    private final boolean depositPaid;
     @JsonProperty("additionalneeds")
-    private final String additionalneeds;
+    private final String additionalNeeds;
     @JsonProperty("bookingdates")
-    private final BookingDates bookingdates;
+    private final BookingDates bookingDates;
 
     public BookerResponse() {
-        var faker=new Faker();
-        firstname= faker.name().firstName();
-        lastname=faker.name().lastName();
-        totalprice=faker.number().numberBetween(5,100);
-        depositpaid=faker.bool().bool();
-        additionalneeds=faker.animal().name();
-        bookingdates=new BookingDates();
+        var faker = new Faker();
+        firstName = faker.name().firstName();
+        lastName = faker.name().lastName();
+        totalPrice = faker.number().numberBetween(5, 100);
+        depositPaid = faker.bool().bool();
+        additionalNeeds = faker.animal().name();
+        bookingDates = new BookingDates();
     }
 
-    public void isEqualsTo(BookerResponse bookerResponse){
-        var sofAssert=new SoftAssert();
-        sofAssert.assertEquals(firstname, bookerResponse.getFirstname());
-        sofAssert.assertEquals(lastname, bookerResponse.getLastname());
-        sofAssert.assertEquals(totalprice, bookerResponse.getTotalprice());
-        sofAssert.assertEquals(depositpaid, bookerResponse.isDepositpaid());
-        sofAssert.assertEquals(additionalneeds, bookerResponse.getAdditionalneeds());
-        sofAssert.assertEquals(bookingdates.getCheckIn(), bookerResponse.getbookingdates().getCheckIn());
-        sofAssert.assertEquals(bookingdates.getCheckOut(), bookerResponse.getbookingdates().getCheckOut());
+    public void isEqualsTo(BookerResponse bookerResponse) {
+        var sofAssert = new SoftAssert();
+        sofAssert.assertEquals(firstName, bookerResponse.getFirstName());
+        sofAssert.assertEquals(lastName, bookerResponse.getLastName());
+        sofAssert.assertEquals(totalPrice, bookerResponse.getTotalPrice());
+        sofAssert.assertEquals(depositPaid, bookerResponse.isDepositPaid());
+        sofAssert.assertEquals(additionalNeeds, bookerResponse.getAdditionalNeeds());
+        sofAssert.assertEquals(bookingDates.getCheckIn(), bookerResponse.getbookingdates().getCheckIn());
+        sofAssert.assertEquals(bookingDates.getCheckOut(), bookerResponse.getbookingdates().getCheckIn());
 
         sofAssert.assertAll();
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public int getTotalprice() {
-        return totalprice;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public boolean isDepositpaid() {
-        return depositpaid;
+    public boolean isDepositPaid() {
+        return depositPaid;
     }
 
-    public String getAdditionalneeds() {
-        return additionalneeds;
+    public String getAdditionalNeeds() {
+        return additionalNeeds;
     }
 
     public BookingDates getbookingdates() {
-        return bookingdates;
+        return bookingDates;
     }
 }
