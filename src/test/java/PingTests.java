@@ -3,8 +3,6 @@ import base.BaseTest;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import java.awt.geom.RectangularShape;
-
 import static org.hamcrest.Matchers.lessThan;
 
 public class PingTests extends BaseTest {
