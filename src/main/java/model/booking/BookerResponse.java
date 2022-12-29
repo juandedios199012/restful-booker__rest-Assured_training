@@ -1,8 +1,8 @@
 package model.booking;
 
 import base.BaseModel;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.javafaker.Faker;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.testng.asserts.SoftAssert;
 
 public class BookerResponse extends BaseModel {
@@ -11,33 +11,33 @@ public class BookerResponse extends BaseModel {
     @JsonProperty("lastname")
     private final String lastname;
     @JsonProperty("totalprice")
-    private final int totalPrice;
+    private final int totalprice;
     @JsonProperty("depositpaid")
-    private final boolean depositPaid;
+    private final boolean depositpaid;
     @JsonProperty("additionalneeds")
-    private final String additionalNeeds;
+    private final String additionalneeds;
     @JsonProperty("bookingdates")
-    private final BookingDates bookingDates;
+    private final BookingDates bookingdates;
 
     public BookerResponse() {
-        var faker = new Faker();
-        firstname = faker.name().firstName();
-        lastname = faker.name().lastName();
-        totalPrice = faker.number().numberBetween(5, 100);
-        depositPaid = faker.bool().bool();
-        additionalNeeds = faker.animal().name();
-        bookingDates = new BookingDates();
+        var faker=new Faker();
+        firstname= faker.name().firstName();
+        lastname=faker.name().lastName();
+        totalprice=faker.number().numberBetween(5,100);
+        depositpaid=faker.bool().bool();
+        additionalneeds=faker.animal().name();
+        bookingdates=new BookingDates();
     }
 
-    public void isEqualsTo(BookerResponse bookerResponse) {
-        var sofAssert = new SoftAssert();
+    public void isEqualsTo(BookerResponse bookerResponse){
+        var sofAssert=new SoftAssert();
         sofAssert.assertEquals(firstname, bookerResponse.getFirstname());
         sofAssert.assertEquals(lastname, bookerResponse.getLastname());
-        sofAssert.assertEquals(totalPrice, bookerResponse.getTotalPrice());
-        sofAssert.assertEquals(depositPaid, bookerResponse.isDepositPaid());
-        sofAssert.assertEquals(additionalNeeds, bookerResponse.getAdditionalNeeds());
-        sofAssert.assertEquals(bookingDates.getCheckIn(), bookerResponse.getbookingdates().getCheckIn());
-        sofAssert.assertEquals(bookingDates.getCheckOut(), bookerResponse.getbookingdates().getCheckIn());
+        sofAssert.assertEquals(totalprice, bookerResponse.getTotalprice());
+        sofAssert.assertEquals(depositpaid, bookerResponse.isDepositpaid());
+        sofAssert.assertEquals(additionalneeds, bookerResponse.getAdditionalneeds());
+        sofAssert.assertEquals(bookingdates.getCheckIn(), bookerResponse.getbookingdates().getCheckIn());
+        sofAssert.assertEquals(bookingdates.getCheckOut(), bookerResponse.getbookingdates().getCheckOut());
 
         sofAssert.assertAll();
     }
@@ -50,19 +50,19 @@ public class BookerResponse extends BaseModel {
         return lastname;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
+    public int getTotalprice() {
+        return totalprice;
     }
 
-    public boolean isDepositPaid() {
-        return depositPaid;
+    public boolean isDepositpaid() {
+        return depositpaid;
     }
 
-    public String getAdditionalNeeds() {
-        return additionalNeeds;
+    public String getAdditionalneeds() {
+        return additionalneeds;
     }
 
     public BookingDates getbookingdates() {
-        return bookingDates;
+        return bookingdates;
     }
 }
