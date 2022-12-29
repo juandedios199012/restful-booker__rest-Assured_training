@@ -1,6 +1,7 @@
 package model.login;
 
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Login {
 
@@ -11,7 +12,7 @@ public class Login {
 
     public Login() {
         this.username = "admin";
-        this.password="password123";
+        this.password = "password123";
     }
 
     public String getUsername() {

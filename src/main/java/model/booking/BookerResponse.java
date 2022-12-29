@@ -2,11 +2,10 @@ package model.booking;
 
 import base.BaseModel;
 import com.github.javafaker.Faker;
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.testng.asserts.SoftAssert;
 
 public class BookerResponse extends BaseModel {
-
     @JsonProperty("firstname")
     private final String firstname;
     @JsonProperty("lastname")
@@ -37,8 +36,8 @@ public class BookerResponse extends BaseModel {
         sofAssert.assertEquals(totalprice, bookerResponse.getTotalprice());
         sofAssert.assertEquals(depositpaid, bookerResponse.isDepositpaid());
         sofAssert.assertEquals(additionalneeds, bookerResponse.getAdditionalneeds());
-        sofAssert.assertEquals(bookingdates.getCheckin(), bookerResponse.getbookingdates().getCheckin());
-        sofAssert.assertEquals(bookingdates.getCheckout(), bookerResponse.getbookingdates().getCheckin());
+        sofAssert.assertEquals(bookingdates.getCheckIn(), bookerResponse.getbookingdates().getCheckIn());
+        sofAssert.assertEquals(bookingdates.getCheckOut(), bookerResponse.getbookingdates().getCheckOut());
 
         sofAssert.assertAll();
     }

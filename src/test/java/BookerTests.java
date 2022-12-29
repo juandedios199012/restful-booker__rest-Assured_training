@@ -1,31 +1,24 @@
 import api.BookerApi;
 import base.BaseTest;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import model.booking.BookerResponse;
 import model.booking.BookingCreateResponse;
 import org.testng.annotations.Test;
-import utilities.RequestFilter;
 
-import java.awt.print.Book;
-
-import static io.restassured.http.Method.*;
 import static org.hamcrest.Matchers.lessThan;
 
 public class BookerTests extends BaseTest {
-
     private Response response;
 
     @Test
-    public void crudBookingTest(){
-        final var bookerApi=new BookerApi(true);
+    public void crudBookingTest() {
+        final var bookerApi = new BookerApi(true);
 
-        final var bookerRequestBody=new BookerResponse();
-        response=bookerApi.createBooking(bookerRequestBody);
+        final var bookerRequestBody = new BookerResponse();
+        response = bookerApi.createBooking(bookerRequestBody);
 
-        var  responseBody =response.then().assertThat()
+        var responseBody = response.then().assertThat()
                 .statusCode(200)
                 .time(lessThan(7000L))
                 .body(JsonSchemaValidator.matchesJsonSchema(getSchema(BookingCreateResponse.schemaFile)))
@@ -33,22 +26,22 @@ public class BookerTests extends BaseTest {
 
         bookerRequestBody.isEqualsTo(responseBody.getBookerResponse());
 
-        final var bookingID=responseBody.getBookingid();
+        final var bookingID = responseBody.getBookingId();
 
         //GET
 
-        response=bookerApi.getBooking(bookingID);
+        response = bookerApi.getBooking(bookingID);
     }
 
     @Test
-    public void deleteUnhappyPathNoAuth(){
+    public void deleteUnhappyPathNoAuth() {
 
-        var bookerApi=new BookerApi(true);
+        var bookerApi = new BookerApi(true);
 
-        final var bookerRequestBody=new BookerResponse();
-        response=bookerApi.createBooking(bookerRequestBody);
+        final var bookerRequestBody = new BookerResponse();
+        response = bookerApi.createBooking(bookerRequestBody);
 
-        var  responseBody =response.then().assertThat()
+        var responseBody = response.then().assertThat()
                 .statusCode(200)
                 .time(lessThan(7000L))
                 .body(JsonSchemaValidator.matchesJsonSchema(getSchema(BookingCreateResponse.schemaFile)))
@@ -56,12 +49,12 @@ public class BookerTests extends BaseTest {
 
         bookerRequestBody.isEqualsTo(responseBody.getBookerResponse());
 
-        final var bookingID=responseBody.getBookingid();
+        final var bookingID = responseBody.getBookingId();
 
-        bookerApi=new BookerApi(false);
+        bookerApi = new BookerApi(false);
 
         //delete
-        response=bookerApi.deleteBooking(bookingID);
+        response = bookerApi.deleteBooking(bookingID);
 
         response.then().assertThat()
                 .statusCode(403)
