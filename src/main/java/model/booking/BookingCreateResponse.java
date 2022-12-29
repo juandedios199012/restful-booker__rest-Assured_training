@@ -1,22 +1,20 @@
 package model.booking;
 
 import base.BaseModel;
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BookingCreateResponse extends BaseModel {
-
-    public static String schemaFile="booking/bookingResponse.json";
+    public static String schemaFile = "booking/bookingResponse.json";
     @JsonProperty("bookingid")
-    private int bookingid;
+    private int bookingId;
     @JsonProperty("booking")
     private BookerResponse bookerResponse;
 
-    public int getBookingid() {
-        return bookingid;
+    public int getBookingId() {
+        return bookingId;
     }
 
     public BookerResponse getBookerResponse() {
         return bookerResponse;
     }
-
 }

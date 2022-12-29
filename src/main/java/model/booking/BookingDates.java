@@ -1,24 +1,24 @@
 package model.booking;
 
 import base.BaseModel;
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BookingDates extends BaseModel {
     @JsonProperty("checkin")
-    private final String checkin;
+    private final String checkIn;
     @JsonProperty("checkout")
-    private final String checkout;
+    private final String checkOut;
 
     public BookingDates() {
-        checkin="2018-01-01";
-        checkout="2018-01-01";
+        checkIn = "2018-01-01";
+        checkOut = "2018-01-01";
     }
 
-    public String getCheckin() {
-        return checkin;
+    public String getCheckIn() {
+        return checkIn;
     }
 
-    public String getCheckout() {
-        return checkout;
+    public String getCheckOut() {
+        return checkOut;
     }
 }
