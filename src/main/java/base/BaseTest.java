@@ -2,7 +2,6 @@ package base;
 
 import java.io.File;
 
-//abstract
 public class BaseTest {
 
     protected final String baseURL="https://restful-booker.herokuapp.com";
