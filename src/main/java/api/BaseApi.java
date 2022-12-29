@@ -9,7 +9,6 @@ import utilities.RequestManager;
 public abstract class BaseApi {
 
     private final RequestManager requestManger;
-    //private boolean isAuth=true;
     protected final Logs logs=new Logs();
 
     public BaseApi(boolean isAuth){
