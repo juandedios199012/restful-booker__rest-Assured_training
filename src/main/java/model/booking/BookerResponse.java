@@ -37,7 +37,7 @@ public class BookerResponse extends BaseModel {
         sofAssert.assertEquals(depositPaid, bookerResponse.isDepositPaid());
         sofAssert.assertEquals(additionalNeeds, bookerResponse.getAdditionalNeeds());
         sofAssert.assertEquals(bookingDates.getCheckIn(), bookerResponse.getbookingdates().getCheckIn());
-        sofAssert.assertEquals(bookingDates.getCheckOut(), bookerResponse.getbookingdates().getCheckIn());
+        sofAssert.assertEquals(bookingDates.getCheckOut(), bookerResponse.getbookingdates().getCheckOut());
 
         sofAssert.assertAll();
     }
